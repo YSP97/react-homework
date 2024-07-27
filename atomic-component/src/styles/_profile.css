@@ -1,0 +1,32 @@
+.Profile {
+  --base: 4px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  .img-group {
+    position: relative;
+    img {
+      opacity: 50%;
+      border-radius: var(--base, 4px);
+    }
+
+    button {
+      border: 0;
+      background-color: transparent;
+      position: absolute;
+      left: 35%;
+      bottom: 35%;
+    }
+  }
+
+  figcaption {
+    color: var(--gray-300, #a6a6a6);
+    font-family: Pretendard;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "atomic-component",
+  "description": "Atomic-component 과제",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "node ./server.mjs",
+    "compile": "tsc --project ./tsconfig.json ",
+    "watch": "npx tsc --project ./tsconfig.json --watch"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "typescript": "^5.5.4"
+  }
+}

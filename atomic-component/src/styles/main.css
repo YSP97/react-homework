@@ -1,0 +1,9 @@
+@import './reset.css';
+@import './_button.css';
+@import './_profile.css';
+
+body {
+  --bg-color: #191919;
+
+  background-color: var(--bg-color, #191919);
+}
