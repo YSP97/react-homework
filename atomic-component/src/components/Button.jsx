@@ -12,6 +12,7 @@ export default function Button({ status, onClick }) {
 
   return (
     <button
+      type="button"
       className={`button ${status}`}
       onClick={onClick}
       aria-label={statusMessage}>
