@@ -20,7 +20,7 @@ function ProfileList() {
   };
 
   return (
-    <div className="list-group">
+    <section className="list-group">
       <ul className="ProfileList">
         {profiles.map((profile, index) => (
           <li key={index}>
@@ -33,7 +33,7 @@ function ProfileList() {
         ))}
       </ul>
       <Button status={buttonStatus} onClick={handleButtonClick} />
-    </div>
+    </section>
   );
 }
 
