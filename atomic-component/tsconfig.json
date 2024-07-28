@@ -1,9 +1,15 @@
 {
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+
   "compilerOptions": {
-    "baseUrl": ".",
-    "strict": true,
-    "jsx": "react",
-    "module": "ESNext",
-    "removeComments": true
+    "types": ["vitest/globals", "node", "jest", "@testing-library/jest-dom"]
   }
 }

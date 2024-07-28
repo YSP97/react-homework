@@ -1,8 +1,7 @@
-// @ts-nocheck
-import React from 'https://esm.sh/react';
-import { createRoot } from 'https://esm.sh/react-dom';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 
-function Profile({ name, imgURL, status = 'lock', size = 234 }): JSX.Element {
+function Profile({ name, imgURL, status = 'lock', size = 234 }) {
   let iconPath = '';
   let statusMessage = '';
 
@@ -33,7 +32,7 @@ function Profile({ name, imgURL, status = 'lock', size = 234 }): JSX.Element {
   );
 }
 
-const container = document.getElementById('root') as HTMLDivElement;
+const container = document.getElementById('root');
 
 if (container) {
   createRoot(container).render(<Profile />);
