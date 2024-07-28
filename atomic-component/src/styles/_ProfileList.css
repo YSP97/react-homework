@@ -1,0 +1,13 @@
+.list-group {
+  display: flex;
+  flex-flow: column;
+  gap: 66px;
+}
+
+.ProfileList {
+  display: flex;
+  flex-flow: row;
+  gap: 52px;
+}
+
+

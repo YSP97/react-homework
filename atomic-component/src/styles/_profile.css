@@ -1,5 +1,4 @@
 .Profile {
-  --base: 4px;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -8,9 +7,10 @@
 
   .img-group {
     position: relative;
+
     img {
-      opacity: 50%;
       border-radius: var(--base, 4px);
+      opacity: 50%;
     }
 
     button {
@@ -19,6 +19,9 @@
       position: absolute;
       left: 35%;
       bottom: 35%;
+      img {
+        opacity: 1;
+      }
     }
   }
 

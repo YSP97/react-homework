@@ -1,1 +1,8 @@
-
+:root {
+  --gray-100: #e1e1e1;
+  --gray-300: #a6a6a6;
+  --gray-600: #565656;
+  --black: #000;
+  --bg-color: #191919;
+  --base: 4px;
+}

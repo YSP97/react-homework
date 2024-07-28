@@ -1,9 +1,16 @@
 @import './reset.css';
-@import './_button.css';
-@import './_profile.css';
+@import './valiables.css';
+@import './_Button.css';
+@import './_Profile.css';
+@import './_ProfileList.css';
 
 body {
-  --bg-color: #191919;
-
   background-color: var(--bg-color, #191919);
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
