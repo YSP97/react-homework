@@ -11,7 +11,7 @@
 ![image](https://github.com/user-attachments/assets/4cc7e327-6bed-4b15-a452-fe973bc3caef)
 
 피그마를 다루는 게 익숙하지 않아 가장 시간이 오래 걸렸습니다...프로필 편집 상태와 잠금 상태의 컴포넌트를 구현하고 싶어서 변경상태를 토글할 수 있는 버튼 컴포넌트도 만들었습니다.
-[시안 링크](profile.fig)
+[시안 링크](https://www.figma.com/design/4pADJVoa91i0LHgoL0dJLk/Profile?node-id=0-1&m=dev)
 
 ## 과정
 
