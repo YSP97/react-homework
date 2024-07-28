@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useState } from 'react';
 import Profile from './Profile.jsx';
 import Button from './Button.jsx';
