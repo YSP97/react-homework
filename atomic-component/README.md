@@ -36,4 +36,4 @@
 ## 결과
 
 ![Atomic-component-Chrome2024-07-2815-33-36online-video-cutter com-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c377db56-6aa4-41af-b9f6-4cf436d2ef48)
-클릭 시 편집 모드가 활성화됩니다.
+<br/>클릭 시 편집 모드가 활성화됩니다.
