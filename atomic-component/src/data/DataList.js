@@ -3,6 +3,9 @@ const profilesData = [
   { name: '슬비쌤', imgURL: 'profile_2.jpg', status: 'lock' },
   { name: '야무쌤', imgURL: 'profile_3.jpg', status: 'lock' },
   { name: '범쌤', imgURL: 'profile_4.jpg', status: 'lock' },
+  { name: '지인님', imgURL: 'profile_4.jpg', status: 'lock' },
+  { name: '지윤님', imgURL: 'profile_4.jpg', status: 'lock' },
+  { name: '나래님', imgURL: 'profile_4.jpg', status: 'lock' },
 ];
 
 export default profilesData;

@@ -19,7 +19,7 @@ function ProfileList() {
   };
 
   return (
-    <section className="list-group">
+    <section className="list-group" title="profile-list">
       <ul className="ProfileList">
         {profiles.map((profile, index) => (
           <li key={index}>
