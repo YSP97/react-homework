@@ -33,6 +33,41 @@
 3. 기능 구현
    - 버튼 클릭시 status props를 변경하여 전달하기 위해 useState를 이용하였습니다. 예습한 내용을 직접 실습할 수 있어 좋았습니다.
 
+## prop type
+
+prop-type 라이브러리 설치를 통해 수행하였습니다.<br/>
+![image](https://github.com/user-attachments/assets/3f8e8e42-7e75-4ffc-a05b-73a79569ec7c)
+<br/>@types 폴더 내부에 globals.d.js라는 타입 검사를 위한 파일을 생성하였습니다.
+
+```js
+import { func, string, number, oneOf, exact } from 'prop-types';
+
+const statusType = oneOf(['lock', 'edit']);
+
+export const profileType = exact({
+  name: string.isRequired,
+  imgURL: string.isRequired,
+  status: statusType,
+  size: number,
+});
+
+export const buttonType = exact({
+  status: statusType,
+  onClick: func.isRequired,
+});
+```
+
+- 상태를 나타내는 prop은 statusType으로 타입을 지정하도록 하였고 lock과 edit 상태 둘 중 하나만 선택하도록 강제하였습니다.
+- profile 컴포넌트와 button 컴포넌트의 props 타입을 따로 관리하기 위해 profileType, buttonType으로 지정하였습니다.
+
+```js
+Button.propTypes = {
+  button: buttonType,
+};
+```
+
+컴포넌트 파일 내부에서 위와같이 import하여 타입 지정을 완료했습니다!
+
 ## 결과
 
 ![Atomic-component-Chrome2024-07-2815-33-36online-video-cutter com-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c377db56-6aa4-41af-b9f6-4cf436d2ef48)
