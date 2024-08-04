@@ -1,11 +1,12 @@
-import { buttonType } from '../@types/globals.d';
+import { func } from 'prop-types';
+import { statusType } from '../@types/globals.d';
 
 Button.propTypes = {
-  button: buttonType,
+  status: statusType,
+  onClick: func.isRequired,
 };
 
-export default function Button(button) {
-  const { status, onClick } = button;
+export default function Button({ status, onClick }) {
   let statusMessage = '';
 
   switch (status) {
@@ -20,9 +21,8 @@ export default function Button(button) {
   return (
     <button
       type="button"
-      className={`button ${status}`}
-      onClick={onClick}
-      aria-label={statusMessage}>
+      className={`button ${status}`.trim()}
+      onClick={onClick}>
       {statusMessage}
     </button>
   );
