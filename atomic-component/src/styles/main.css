@@ -1,8 +1,8 @@
 @import './reset.css';
 @import './valiables.css';
-@import 'src/styles/_Button.css';
-@import 'src/styles/_Profile.css';
-@import 'src/styles/_ProfileList.css';
+@import '@/styles/_Button.css';
+@import '@/styles/_Profile.css';
+@import '@/styles/_ProfileList.css';
 
 body {
   background-color: var(--bg-color, #191919);
