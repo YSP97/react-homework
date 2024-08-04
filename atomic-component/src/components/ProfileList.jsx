@@ -18,8 +18,19 @@ function ProfileList() {
     setButton(newStatus);
   };
 
+  let title = '';
+  switch (buttonStatus) {
+    case 'lock':
+      title = '프로필 선택';
+      break;
+    case 'edit':
+      title = '프로필 편집';
+      break;
+  }
+
   return (
-    <section className="list-group" title="profile-list">
+    <section className="list-group">
+      <h2>{title}</h2>
       <ul className="ProfileList">
         {profiles.map((profile, index) => (
           <li key={index}>

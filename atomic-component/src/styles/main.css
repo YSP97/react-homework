@@ -14,3 +14,17 @@ body {
   align-items: center;
   height: 100vh;
 }
+
+h2 {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+
+  text-align: center;
+  /* Heading/XXXL */
+  font-family: Pretendard;
+  font-size: 50.517px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 70.724px */
+}
