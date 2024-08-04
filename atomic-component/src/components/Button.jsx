@@ -1,4 +1,11 @@
-export default function Button({ status, onClick }) {
+import { buttonType } from '../@types/globals.d';
+
+Button.propTypes = {
+  button: buttonType,
+};
+
+export default function Button(button) {
+  const { status, onClick } = button;
   let statusMessage = '';
 
   switch (status) {

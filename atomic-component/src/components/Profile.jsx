@@ -1,4 +1,11 @@
-export default function Profile({ name, imgURL, status = 'lock', size = 234 }) {
+import { profileType } from '../@types/globals.d';
+
+Profile.propTypes = {
+  profile: profileType,
+};
+
+export default function Profile(profile) {
+  const { name, imgURL, status = 'lock', size = 234 } = profile;
   let iconPath = '';
   let statusMessage = '';
 
