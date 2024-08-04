@@ -28,8 +28,8 @@
   figcaption {
     color: var(--gray-300, #a6a6a6);
     font-family: Pretendard;
-    font-size: 24px;
     font-style: normal;
+    font-size: 24px;
     font-weight: 500;
   }
 }

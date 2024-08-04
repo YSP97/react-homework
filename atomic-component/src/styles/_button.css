@@ -6,8 +6,8 @@
   font-family: Pretendard;
   font-size: 28.4px;
   font-style: normal;
-  font-weight: 500;
   border: 1px solid var(--gray-600, #565656);
+  font-weight: 500;
 }
 
 .lock {

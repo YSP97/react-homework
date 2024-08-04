@@ -1,7 +1,7 @@
 @import './reset.css';
 @import './valiables.css';
-@import '@/styles/_Button.css';
-@import '@/styles/_Profile.css';
+@import '@/styles/_button.css';
+@import '@/styles/_profile.css';
 @import '@/styles/_ProfileList.css';
 
 body {
