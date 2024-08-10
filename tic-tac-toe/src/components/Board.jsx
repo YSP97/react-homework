@@ -1,6 +1,6 @@
 import Status from './Status';
 import Squares from './Squares';
-import S from '@/styles/components/Board.module.css';
+import S from '../styles/components/Board.module.css';
 
 function Board() {
   return (
