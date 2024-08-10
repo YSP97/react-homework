@@ -1,5 +1,7 @@
+import S from '@/styles/components/Status.module.css';
+
 function Status() {
-  return <></>;
+  return <div className={S.component}></div>;
 }
 
 export default Status;

@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import Game from '@/pages/Game';
+import '@/styles/main.css';
 
 const container = document.getElementById('root');
 
