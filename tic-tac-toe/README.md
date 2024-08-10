@@ -1,13 +1,12 @@
-# Vite+React custom template
+# tic-tac-toe Game
 
-## scaffolding
+## 구현 과정
 
-degit 명령으로 react 환경구성을 위한 vite template을 스캐폴딩 할 수 있습니다.
+### 1. Square 컴포넌트
 
-```
-degit YSP97/react-template <프로젝트_이름>
-```
+- [x] 컴포넌트 속성 설계
+- [x] Square 컴포넌트 속성(props) 검사를 작성
 
-## 폴더 구성
+## 2. Squares 컴포넌트
 
-![image](https://github.com/user-attachments/assets/dc9d01b8-4573-4d3c-8962-47f52d8b1d5a)
+- [x] Squares 배열의 초기값을 null 9개로 구성하여 배열을 순회하며 리스트 렌더링

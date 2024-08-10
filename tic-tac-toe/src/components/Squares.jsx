@@ -1,18 +1,13 @@
 import Square from './Square';
 import S from '../styles/components/Squares.module.css';
+import { INITIAL_SQUARES, PLAYER } from './../constants';
 
 function Squares() {
   return (
     <div className={S.component}>
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
+      {INITIAL_SQUARES.map((square, index) => {
+        return <Square key={index}>{square}</Square>;
+      })}
     </div>
   );
 }

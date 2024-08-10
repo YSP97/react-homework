@@ -1,7 +1,12 @@
+import { node } from 'prop-types';
 import S from '../styles/components/Square.module.css';
 
-function Square() {
-  return <button className={S.component}>❤️</button>;
+Square.propTypes = {
+  children: node,
+};
+
+function Square({ children }) {
+  return <button className={S.component}>{children}</button>;
 }
 
 export default Square;
