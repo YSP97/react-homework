@@ -16,6 +16,8 @@ const WINNER_CONDITIONS = [
   [2, 4, 6],
 ];
 
+export const WINNERS_COLOR = '#fff047';
+
 export const checkWinner = (squares) => {
   let winnerInfo = null;
   for (let [x, y, z] of WINNER_CONDITIONS) {

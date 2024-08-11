@@ -1,6 +1,11 @@
 import Square from './Square';
 import S from '../styles/components/Squares.module.css';
-import { INITIAL_SQUARES, PLAYER, checkWinner } from './../constants';
+import {
+  INITIAL_SQUARES,
+  PLAYER,
+  checkWinner,
+  WINNERS_COLOR,
+} from './../constants';
 import { useState } from 'react';
 
 function Squares() {
@@ -31,8 +36,19 @@ function Squares() {
   return (
     <div className={S.component}>
       {squares.map((square, index) => {
+        const winnerStyle = {
+          backgroundColor: null,
+        };
+
+        if (winnerInfo) {
+          const [x, y, z] = winnerInfo.condition;
+
+          if (index === x || index === y || index === z) {
+            winnerStyle.backgroundColor = WINNERS_COLOR;
+          }
+        }
         return (
-          <Square key={index} onPlay={handlePlay(index)}>
+          <Square key={index} onPlay={handlePlay(index)} style={winnerStyle}>
             {square}
           </Square>
         );
