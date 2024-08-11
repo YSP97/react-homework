@@ -15,6 +15,7 @@
 - [x] 게임이 이겼는 지, 졌는 지 확인하는 승리 조건을 게임의 상수로 선언
 - [x] 승리 시 해당 Square 색 칠하기
 - [x] 게임이 종료되면 더이상 게임을 실행하지 않도록 하기, 게임오버 메세지 띄우기
+- [x] propTypes 검사 상수로 분리
 
 ## 3. 상태 끌어올리기
 
@@ -22,8 +23,10 @@
 - [x] Squares 컴포넌트 prop types 검사
 - [x] prop types 파일 분리
 - [x] proptypes 검사를 위한 PLAYER_LIST 상수 생성
+- [x] History 컴포넌트에서의 state 사용을 위한 state 끌어올리기 Board → Game
 
 ## Status 컴포넌트
 
 - [x] 게임 상태 메시지 표시
 - [x] proptypes 검사
+- [x] propTypes 검사 상수로 분리

@@ -1,22 +1,14 @@
 import S from '@/styles/components/Status.module.css';
-import { OneOfPlayerType } from '@/types/types.d';
-import { bool } from 'prop-types';
+import { statusPropTypes } from '@/types/types.d';
 
-Status.propTypes = {
-  winner: OneOfPlayerType,
-  isDraw: bool,
-  nextPlayer: OneOfPlayerType.isRequired,
-};
+Status.propTypes = statusPropTypes;
 
 function Status({ winner, isDraw = false, nextPlayer }) {
-  if (winner) {
-    return <h2 className={S.component}>승자는 {winner}!!</h2>;
-  }
+  let statusMessage = `다음 플레이어 : ${nextPlayer}`;
+  if (winner) statusMessage = `승리자: ${winner}`;
+  if (isDraw) statusMessage = 'Draw!! 비겼습니다.';
 
-  if (isDraw) {
-    return <h2 className={S.component}>비겼네용 한 판 더 하시겠어요??</h2>;
-  }
-  return <h2 className={S.component}>다음 플레이어: {nextPlayer}</h2>;
+  return <h2 className={S.component}>{statusMessage}</h2>;
 }
 
 export default Status;

@@ -1,4 +1,4 @@
-import { arrayOf, func, oneOf, number, shape } from 'prop-types';
+import { arrayOf, func, oneOf, number, shape, bool } from 'prop-types';
 import { PLAYER_LIST } from './../constants';
 
 export const OneOfPlayerType = oneOf(PLAYER_LIST);
@@ -12,4 +12,19 @@ export const SquaresPropTypes = {
   onPlay: func,
   squares: OneOfPlayerListType.isRequired,
   winnerInfo: WinnerInfoType,
+};
+
+export const BoardPropTypes = {
+  winnerInfo: WinnerInfoType,
+  nextPlayer: OneOfPlayerType.isRequired,
+  isDraw: bool.isRequired,
+  squares: OneOfPlayerListType,
+  onPlay: func,
+};
+
+
+export const statusPropTypes = {
+  winner: OneOfPlayerType,
+  isDraw: bool,
+  nextPlayer: OneOfPlayerType.isRequired,
 };
