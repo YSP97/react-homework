@@ -11,7 +11,10 @@ import { useState } from 'react';
 function Squares() {
   const [squares, setSquares] = useState(INITIAL_SQUARES);
   const handlePlay = (index) => () => {
-    console.log(`게임 플레이! ${index}`);
+    if (winnerInfo) {
+      alert(`게임 종료! 승자는 ${winnerInfo.winner} 축하해!`);
+      return;
+    }
     setSquares((prevSquares) => {
       const nextSquares = prevSquares.map((square, squareIndex) => {
         if (squareIndex === index) {
@@ -25,9 +28,7 @@ function Squares() {
   };
 
   const winnerInfo = checkWinner(squares);
-  if (winnerInfo) {
-    console.log(winnerInfo);
-  }
+
   // 게임 순서 index
   const gameIndex = squares.filter(Boolean).length % Object.keys(PLAYER).length;
 
