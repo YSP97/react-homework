@@ -16,9 +16,14 @@
 - [x] 승리 시 해당 Square 색 칠하기
 - [x] 게임이 종료되면 더이상 게임을 실행하지 않도록 하기, 게임오버 메세지 띄우기
 
-# 3. 상태 끌어올리기
+## 3. 상태 끌어올리기
 
 - [x] Status 컴포넌트에서의 state 사용을 위한 Squares -> Board로의 state 끌어올리기
 - [x] Squares 컴포넌트 prop types 검사
 - [x] prop types 파일 분리
 - [x] proptypes 검사를 위한 PLAYER_LIST 상수 생성
+
+## Status 컴포넌트
+
+- [x] 게임 상태 메시지 표시
+- [x] proptypes 검사

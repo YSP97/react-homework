@@ -4,6 +4,7 @@ import S from '../styles/components/Board.module.css';
 import {
   INITIAL_SQUARES,
   PLAYER,
+  PLAYER_COUNT,
   checkWinner,
 } from './../constants';
 import { useState } from 'react';
@@ -17,11 +18,7 @@ function Board() {
     }
     setSquares((prevSquares) => {
       const nextSquares = prevSquares.map((square, squareIndex) => {
-        if (squareIndex === index) {
-          return currentPlayer;
-        }
-
-        return square;
+        return squareIndex === index ? nextPlayer : square;
       });
       return nextSquares;
     });
@@ -29,19 +26,19 @@ function Board() {
 
   const winnerInfo = checkWinner(squares);
 
-  // 게임 순서 index
-  const gameIndex = squares.filter(Boolean).length % Object.keys(PLAYER).length;
+  const isPlayerOneTurn = squares.filter(Boolean).length % PLAYER_COUNT === 0;
 
-  // gameIndex에 따른 현재 플레이어(왔다리 갔다리..)
-  const currentPlayer = gameIndex === 0 ? PLAYER.ONE : PLAYER.TWO;
+  const nextPlayer = isPlayerOneTurn ? PLAYER.ONE : PLAYER.TWO;
+
+  const isDraw = !winnerInfo && squares.every(Boolean);
   return (
     <div className={S.component}>
-      <Status />
-      <Squares
-        squares={squares}
-        winnerInfo={winnerInfo}
-        onPlay={handlePlay}
+      <Status
+        winner={winnerInfo?.winner}
+        nextPlayer={nextPlayer}
+        isDraw={isDraw}
       />
+      <Squares squares={squares} winnerInfo={winnerInfo} onPlay={handlePlay} />
     </div>
   );
 }
