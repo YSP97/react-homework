@@ -1,39 +1,11 @@
 import Square from './Square';
 import S from '../styles/components/Squares.module.css';
-import {
-  INITIAL_SQUARES,
-  PLAYER,
-  checkWinner,
-  WINNERS_COLOR,
-} from './../constants';
-import { useState } from 'react';
+import { WINNERS_COLOR } from './../constants';
+import { SquaresPropTypes } from '../types/types.d';
 
-function Squares() {
-  const [squares, setSquares] = useState(INITIAL_SQUARES);
-  const handlePlay = (index) => () => {
-    if (winnerInfo) {
-      alert(`게임 종료! 승자는 ${winnerInfo.winner} 축하해!`);
-      return;
-    }
-    setSquares((prevSquares) => {
-      const nextSquares = prevSquares.map((square, squareIndex) => {
-        if (squareIndex === index) {
-          return currentPlayer;
-        }
+Squares.propTypes = SquaresPropTypes;
 
-        return square;
-      });
-      return nextSquares;
-    });
-  };
-
-  const winnerInfo = checkWinner(squares);
-
-  // 게임 순서 index
-  const gameIndex = squares.filter(Boolean).length % Object.keys(PLAYER).length;
-
-  // gameIndex에 따른 현재 플레이어(왔다리 갔다리..)
-  const currentPlayer = gameIndex === 0 ? PLAYER.ONE : PLAYER.TWO;
+function Squares({ squares, onPlay, winnerInfo }) {
   return (
     <div className={S.component}>
       {squares.map((square, index) => {
@@ -49,7 +21,7 @@ function Squares() {
           }
         }
         return (
-          <Square key={index} onPlay={handlePlay(index)} style={winnerStyle}>
+          <Square key={index} onPlay={onPlay(index)} style={winnerStyle}>
             {square}
           </Square>
         );

@@ -3,6 +3,8 @@ export const PLAYER = {
   TWO: '🐻',
 };
 
+export const PLAYER_LIST = Object.values(PLAYER);
+
 export const INITIAL_SQUARES = Array(9).fill(null);
 
 const WINNER_CONDITIONS = [
