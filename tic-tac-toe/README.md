@@ -30,3 +30,11 @@
 - [x] 게임 상태 메시지 표시
 - [x] proptypes 검사
 - [x] propTypes 검사 상수로 분리
+
+## History 컴포넌트
+
+- [x] Game 컴포넌트에서 말판의 상태를 기록(상태관리) -> gameHistory state 관리
+- [x] Game 컴포넌트의 상태를 Board와 History에 공유
+- [x] 시간 되돌리기 구현
+- [x] propTypes 검사
+- [x] propTypes 검사 상수로 분리

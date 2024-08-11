@@ -22,9 +22,14 @@ export const BoardPropTypes = {
   onPlay: func,
 };
 
-
 export const statusPropTypes = {
   winner: OneOfPlayerType,
   isDraw: bool,
   nextPlayer: OneOfPlayerType.isRequired,
+};
+
+export const HistoryPropTypes = {
+  gameIndex: number.isRequired,
+  gameHistory: arrayOf(OneOfPlayerListType),
+  onTimeTravel: func,
 };

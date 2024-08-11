@@ -10,37 +10,58 @@ import {
 import { useState } from 'react';
 
 function Game() {
-  const [squares, setSquares] = useState(INITIAL_SQUARES);
+  const [gameHistory, setGameHistory] = useState([INITIAL_SQUARES]);
+  const [gameIndex, setGameIndex] = useState(0);
+
+  const currentSquares = gameHistory[gameIndex];
+  const winnerInfo = checkWinner(currentSquares);
+
+  const isPlayerOneTurn =
+    currentSquares.filter(Boolean).length % PLAYER_COUNT === 0;
+
+  const nextPlayer = isPlayerOneTurn ? PLAYER.ONE : PLAYER.TWO;
+
   const handlePlay = (index) => () => {
     if (winnerInfo) {
       alert(`게임 종료! 승자는 ${winnerInfo.winner} 축하해!`);
       return;
     }
-    setSquares((prevSquares) => {
-      const nextSquares = prevSquares.map((square, squareIndex) => {
-        return squareIndex === index ? nextPlayer : square;
-      });
-      return nextSquares;
+
+    const nextGameIndex = gameIndex + 1;
+    setGameIndex(nextGameIndex);
+
+    const nextSquares = currentSquares.map((square, idx) => {
+      return idx === index ? nextPlayer : square;
     });
+
+    const nextGameHistory = [
+      ...gameHistory.slice(0, nextGameIndex),
+      nextSquares,
+    ];
+
+    setGameHistory(nextGameHistory);
   };
 
-  const winnerInfo = checkWinner(squares);
+  const handleTimeTravel = (index) => {
+    setGameIndex(index);
+  };
 
-  const isPlayerOneTurn = squares.filter(Boolean).length % PLAYER_COUNT === 0;
+  const isDraw = !winnerInfo && currentSquares.every(Boolean);
 
-  const nextPlayer = isPlayerOneTurn ? PLAYER.ONE : PLAYER.TWO;
-
-  const isDraw = !winnerInfo && squares.every(Boolean);
   return (
     <div className={S.component}>
       <Board
-        squares={squares}
+        squares={currentSquares}
         winnerInfo={winnerInfo}
         nextPlayer={nextPlayer}
         onPlay={handlePlay}
         isDraw={isDraw}
       />
-      <History />
+      <History
+        gameHistory={gameHistory}
+        onTimeTravel={handleTimeTravel}
+        gameIndex={gameIndex}
+      />
     </div>
   );
 }
