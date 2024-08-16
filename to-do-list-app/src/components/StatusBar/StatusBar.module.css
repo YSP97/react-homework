@@ -1,0 +1,7 @@
+.component {
+  margin-top: 32px;
+  margin-bottom: 22px;
+  display: flex;
+  flex-flow: row;
+  gap: 16px;
+}

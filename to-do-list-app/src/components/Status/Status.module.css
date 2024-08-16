@@ -1,0 +1,41 @@
+.component {
+  display: flex;
+  flex-flow: row;
+  gap: 10px;
+  a {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+.link {
+  display: flex;
+  flex-flow: row;
+  gap: 4px;
+
+  p {
+    color: var(--Status-active, #0760fb);
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  div {
+    color: var(--background, #fff);
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 4px;
+    padding: 2px 4px;
+
+    opacity: var(--sds-size-stroke-border);
+
+    background: var(--Status-active, #0760fb);
+  }
+}
