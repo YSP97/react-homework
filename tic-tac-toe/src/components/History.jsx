@@ -8,6 +8,7 @@ function History({ gameIndex, gameHistory = [], onTimeTravel }) {
   return (
     <div className={S.component}>
       <ol>
+        {/* [[null, null, null,...],[null, '🐻, null,...],[null,🐻,🦁,...] */}
         {gameHistory.map((history, index) => {
           const buttonLabel =
             index === 0 ? '게임 시작' : `게임 ${index}로 돌아가기`;
