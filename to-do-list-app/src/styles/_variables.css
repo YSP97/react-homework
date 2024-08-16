@@ -1,0 +1,26 @@
+:root {
+  --white: #ffffff;
+  --black: #00050e;
+  --blue: #0760fb;
+  --dodgerblue: #4b8dff;
+  --lightblue: #e2ebfa;
+
+  --gray-50: #f9f9f9;
+  --gray-100: #f4f4f4;
+  --gray-200: #d9d9d9;
+  --gray-300: #979797;
+  --gray-400: #717171;
+  --gray-500: #393939;
+
+  --background: var(--white);
+  --forgroud: var(--black);
+  --primary: var(--blue);
+
+  --rounded-none: 0;
+  --rounded-xs: 2;
+  --rounded-sm: 4;
+  --rounded-md: 8;
+  --rounded-lg: 16;
+  --rounded-xl: 32;
+  --rounded-full: 9999;
+}
