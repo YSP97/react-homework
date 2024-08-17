@@ -2,24 +2,19 @@ import React from 'react';
 import Status from '../Status/Status';
 import S from './StatusBar.module.css';
 
-function StatusBar({ data, onStatusClick, status }) {
+function StatusBar({ data, onStatusClick, activeStatus }) {
   return (
     <div className={S.component}>
-      {data.map((item, index) => {
-        return (
-          <React.Fragment key={index}>
-            <Status
-              key={index}
-              title={item.title}
-              count={item.count}
-              status={item.status}
-              isActive={status === item.status}
-              onClick={onStatusClick}
-            />
-            {item.status === 'all' ? <p>|</p> : ''}
-          </React.Fragment>
-        );
-      })}
+      {data.map((item) => (
+        <Status
+          key={item.status}
+          title={item.title}
+          count={item.count}
+          status={item.status}
+          isActive={activeStatus === item.status}
+          onClick={onStatusClick}
+        />
+      ))}
     </div>
   );
 }
