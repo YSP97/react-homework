@@ -4,19 +4,36 @@ import StatusBar from '@/components/StatusBar/StatusBar';
 import CardList from '@/components/CardList/CardList';
 import Modal from '@/components/Modal/Modal';
 import getToday from '@/utils/getToday';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { data, dataList } from '@/data/getData';
+
 
 function App() {
   const [isClosedModal, setIsActive] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [activeStatus, setActiveStatus] = useState('all');
+  const [list, setList] = useState(dataList);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let filteredData = dataList;
+
+      if (activeStatus === 'done') {
+        filteredData = dataList.filter((item) => item.checked === true);
+      } else if (activeStatus === 'todo') {
+        filteredData = dataList.filter((item) => item.checked === false);
+      } else if (activeStatus === 'save') {
+        filteredData = dataList.filter((item) => item.saved === true);
+      }
+      setList(filteredData);
+    };
+    fetchData();
+  }, [activeStatus]);
 
   const handleBtnClick = () => {
-    console.log('안녕');
     setIsActive(!isClosedModal);
   };
 
   const handleSave = () => {
-    console.log('저장된 값:', inputValue);
     setIsActive(false);
   };
 
@@ -24,6 +41,12 @@ function App() {
     setIsActive(false);
   };
   const today = getToday();
+
+  const handleStatusClick = (activeStatus) => {
+    setActiveStatus(activeStatus);
+
+  };
+
   return (
     <div className={S.component}>
       <a href="">
@@ -34,13 +57,17 @@ function App() {
         <p>{today}</p>
       </div>
       <Button onClick={handleBtnClick} btnText={'생각났어?'} />
-      <StatusBar />
-      <CardList />
+      <StatusBar
+        data={data}
+        onStatusClick={handleStatusClick}
+        status={activeStatus}
+        list={list}
+      />
+      <CardList data={data} activeStatus={activeStatus} list={list} />
       <Modal
         isClosedModal={isClosedModal}
         onSave={handleSave}
         onClose={handleClose}
-        setInputValue={setInputValue}
       />
     </div>
   );
