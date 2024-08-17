@@ -3,8 +3,10 @@ import S from './App.module.css';
 import StatusBar from '@/components/StatusBar/StatusBar';
 import CardList from '@/components/CardList/CardList';
 import Modal from '@/components/Modal/Modal';
+import getToday from '@/utils/getToday';
 
 function App() {
+  const today = getToday();
   return (
     <div className={S.component}>
       <a href="">
@@ -12,7 +14,7 @@ function App() {
       </a>
       <div className={S.h2Group}>
         <h2>우리, 오늘 뭐할까?</h2>
-        <p>2024년 8월 15일 (목요일)</p>
+        <p>{today}</p>
       </div>
       <Button />
       <StatusBar />
