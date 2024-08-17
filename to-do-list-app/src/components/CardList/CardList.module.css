@@ -1,0 +1,5 @@
+.component {
+  display: flex;
+  flex-flow: column;
+  gap: var(--space-5, 20px);
+}

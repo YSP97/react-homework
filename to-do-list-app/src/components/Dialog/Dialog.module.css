@@ -1,0 +1,34 @@
+.component {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 24px;
+  padding: var(--space-7-half, 30px);
+  background-color: #fff;
+
+  h3 {
+    overflow: hidden;
+    color: var(--Dialog-title, #0760fb);
+    text-overflow: ellipsis;
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  input {
+    border: none;
+    overflow: hidden;
+    border-bottom: 1px solid var(--Input-normal, #979797);
+    color: var(--Input-normal, #979797);
+    text-overflow: ellipsis;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    padding: 4px;
+  }
+}
