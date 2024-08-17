@@ -26,6 +26,7 @@
     "vite": "5.3.5"
   },
   "dependencies": {
+    "gsap": "3.12.5",
     "pocketbase": "0.21.4",
     "react": "18.3.1",
     "react-dom": "18.3.1"

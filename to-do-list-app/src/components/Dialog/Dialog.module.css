@@ -8,9 +8,7 @@
   background-color: #fff;
 
   h3 {
-    /* overflow: hidden; */
     color: var(--Dialog-title, #0760fb);
-    /* text-overflow: ellipsis; */
     font-family: Pretendard;
     font-size: 18px;
     font-style: normal;
@@ -20,10 +18,8 @@
 
   input {
     border: none;
-    /* overflow: hidden; */
     border-bottom: 1px solid var(--Input-normal, #979797);
     color: var(--Input-normal, #979797);
-    /* text-overflow: ellipsis; */
     font-family: Pretendard;
     font-size: 14px;
     font-style: normal;
@@ -31,7 +27,7 @@
     line-height: 150%;
     padding: 4px;
     box-sizing: border-box;
-    /* height: 60px; */
+
   }
 
   input::placeholder {

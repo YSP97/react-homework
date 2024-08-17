@@ -6,6 +6,7 @@ import CardList from '@/components/CardList/CardList';
 import Modal from '@/components/Modal/Modal';
 import getToday from '@/utils/getToday';
 import pb from '/api/pocketbase';
+import gsap from 'gsap';
 
 function App() {
   const [isClosedModal, setIsActive] = useState(false);
@@ -44,6 +45,18 @@ function App() {
       { title: '보관', count: saveCount, status: 'save' },
     ]);
   };
+
+  useEffect(() => {
+    if (isClosedModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isClosedModal]);
 
   useEffect(() => {
     const fetchData = async () => {
