@@ -1,25 +1,33 @@
 .component {
   background: var(--Dialog-background, white);
-  position: absolute;
+  /* position: absolute; */
   top: 38%;
   box-shadow: 0px -2px 6px 0px #00040e1a;
-  width: 320px;
+  /* width: 320px; */
   border-radius: var(--space-5, 20px) var(--space-5, 20px) 0px 0px;
+  display: none;
+  position: fixed;
+}
+
+.isActive {
+  display: block;
 }
 
 .buttons {
   display: flex;
   gap: 8px;
-  padding: var(--space-7-half, 30px);
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 80px;
 }
 
 .modal {
   /* display: flex;
   flex-flow: column;
   justify-content: center; */
-  /* padding: var(--space-7-half, 30px); */
+  padding: var(--space-7-half, 30px);
 
   gap: var(--space-6, 24px);
   background: var(--Dialog-background, white);
-  width: 320px;
+  width: 260px;
 }

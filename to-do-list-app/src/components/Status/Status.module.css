@@ -39,3 +39,13 @@
     background: var(--Status-active, #0760fb);
   }
 }
+
+.isActive {
+  p {
+    color: var(--Status-deactive, #979797);
+  }
+
+  div {
+    background: var(--Status-deactive, #979797);
+  }
+}

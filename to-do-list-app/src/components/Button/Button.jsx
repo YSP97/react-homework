@@ -1,9 +1,8 @@
 import S from './Button.module.css';
-function Button() {
-  const isSvgHidden = false;
+function Button({ onClick, style, btnText, isSvgHidden }) {
   return (
     <div className={S.component}>
-      <button type="button">
+      <button type="button" onClick={onClick} style={style}>
         <svg
           className={isSvgHidden ? S.hidden : ''}
           width="20"
@@ -20,7 +19,7 @@ function Button() {
             />
           </g>
         </svg>
-        생각 났어?
+        {btnText}
       </button>
     </div>
   );

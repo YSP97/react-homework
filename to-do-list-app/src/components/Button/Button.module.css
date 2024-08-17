@@ -1,15 +1,14 @@
 .component {
+  display: flex;
+  justify-content: center;
   button {
-    display: inline-flex;
-    padding: var(--space-4-half, 18px) var(--space-5, 20px);
-
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
     border-radius: var(--space-3, 12px);
     opacity: var(--sds-size-stroke-border);
     background: var(--primary, #0760fb);
-
     color: var(--lightblue, #e2ebfa);
     text-align: center;
     font-family: Pretendard;
@@ -17,8 +16,11 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-
     border-color: transparent;
+    width: auto;
+    min-width: 126px;
+    box-sizing: border-box;
+    padding: var(--space-4-half, 18px) var(--space-5, 20px);
   }
 
   .hidden {

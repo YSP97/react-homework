@@ -1,10 +1,10 @@
 import S from './Status.module.css';
-function Status() {
+function Status({ count, title, isActive }) {
   return (
     <div className={S.component}>
-      <a href="/" className={S.link}>
-        <p>모두</p>
-        <div>3</div>
+      <a href="/" className={`${S.link} ${isActive ? S.isActive : ''}`}>
+        <p>{title}</p>
+        <div>{count}</div>
       </a>
     </div>
   );

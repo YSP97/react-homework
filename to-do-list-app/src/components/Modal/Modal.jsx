@@ -1,16 +1,41 @@
 import Button from '../Button/Button';
 import Dialog from '../Dialog/Dialog';
 import S from './Modal.module.css';
-function Modal() {
+import listData from './../../data/data';
+
+function Modal({ isClosedModal, onSave, onClose, setInputValue }) {
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const cancelBtnStyle = {
+    background: '#E2EBFA',
+    color: '#0760FB',
+  };
+
+  const isSvgHidden = true;
+
+  console.log(isClosedModal);
   return (
-    <div className={S.component}>
+    <div className={`${S.component} ${isClosedModal ? S.isActive : ''}`}>
       <div className={S.modal}>
-        <Dialog />
-        <Dialog />
-        <Dialog />
+        {listData.map((item, index) => (
+          <Dialog
+            key={index}
+            title={item.title}
+            text={item.text}
+            onChange={handleChange}
+          />
+        ))}
         <div className={S.buttons}>
-          <Button />
-          <Button />
+          <Button onClick={onSave} btnText={'저장'} isSvgHidden={isSvgHidden} />
+          <Button
+            onClick={onClose}
+            style={cancelBtnStyle}
+            btnText={'취소'}
+            isSvgHidden={isSvgHidden}
+          />
         </div>
       </div>
     </div>

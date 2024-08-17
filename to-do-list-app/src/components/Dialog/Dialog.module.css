@@ -4,13 +4,13 @@
   justify-content: center;
   gap: 4px;
   margin-bottom: 24px;
-  padding: var(--space-7-half, 30px);
+  width: 100%;
   background-color: #fff;
 
   h3 {
-    overflow: hidden;
+    /* overflow: hidden; */
     color: var(--Dialog-title, #0760fb);
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
     font-family: Pretendard;
     font-size: 18px;
     font-style: normal;
@@ -20,15 +20,52 @@
 
   input {
     border: none;
-    overflow: hidden;
+    /* overflow: hidden; */
     border-bottom: 1px solid var(--Input-normal, #979797);
     color: var(--Input-normal, #979797);
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
     font-family: Pretendard;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 150%;
     padding: 4px;
+    box-sizing: border-box;
+    /* height: 60px; */
+  }
+
+  input::placeholder {
+    white-space: pre-wrap;
+  }
+}
+
+.selectContainer {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  select {
+    border: 1px solid var(--Select-border, #d9d9d9);
+    border-radius: var(--space-1-half, 6px);
+    padding: var(--space-1-half, 6px) var(--space-1-half, 6px)
+      var(--space-1-half, 6px) 8px;
+
+    background: var(--Select-background, #fff);
+    color: var(--primary);
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+  }
+}
+.timeInputContainer {
+  display: flex;
+  flex-flow: row;
+  gap: 3px;
+
+  input {
+    width: 47px;
+    border-bottom: 1px solid var(--Time-normal, #979797);
+    opacity: var(--sds-size-stroke-border);
   }
 }
