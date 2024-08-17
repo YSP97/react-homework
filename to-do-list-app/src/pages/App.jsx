@@ -1,17 +1,16 @@
+import { useEffect, useState } from 'react';
 import Button from '@/components/Button/Button';
 import S from './App.module.css';
 import StatusBar from '@/components/StatusBar/StatusBar';
 import CardList from '@/components/CardList/CardList';
 import Modal from '@/components/Modal/Modal';
 import getToday from '@/utils/getToday';
-import { useEffect, useState } from 'react';
 import pb from '/api/pocketbase';
-let dataList = await pb.collection('List').getFullList();
 
 function App() {
   const [isClosedModal, setIsActive] = useState(false);
+  const [list, setList] = useState([]);
   const [activeStatus, setActiveStatus] = useState('all');
-  const [list, setList] = useState(dataList);
   const [statusData, setStatusData] = useState([
     { title: '모두', count: 0, status: 'all' },
     { title: '할일', count: 0, status: 'todo' },
@@ -19,23 +18,37 @@ function App() {
     { title: '보관', count: 0, status: 'save' },
   ]);
 
+  const updateStatusData = async () => {
+    const allList = await pb.collection('List').getFullList();
+
+    const filteredList =
+      activeStatus === 'done'
+        ? allList.filter((item) => item.checked)
+        : activeStatus === 'todo'
+          ? allList.filter((item) => !item.checked)
+          : activeStatus === 'save'
+            ? allList.filter((item) => item.saved)
+            : allList;
+
+    setList(filteredList);
+
+    const allCount = allList.length;
+    const todoCount = allList.filter((item) => !item.checked).length;
+    const doneCount = allList.filter((item) => item.checked).length;
+    const saveCount = allList.filter((item) => item.saved).length;
+
+    setStatusData([
+      { title: '모두', count: allCount, status: 'all' },
+      { title: '할일', count: todoCount, status: 'todo' },
+      { title: '한일', count: doneCount, status: 'done' },
+      { title: '보관', count: saveCount, status: 'save' },
+    ]);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let filteredList = list;
-
-        if (activeStatus === 'done') {
-          filteredList = list.filter((item) => item.checked === true);
-        } else if (activeStatus === 'todo') {
-          filteredList = list.filter((item) => item.checked === false);
-        } else if (activeStatus === 'save') {
-          filteredList = list.filter((item) => item.saved === true);
-        } else {
-          filteredList = dataList;
-        }
-
-        setList(filteredList);
-        updateDataCounts(dataList);
+        updateStatusData();
       } catch (error) {
         console.error('데이터 가져오기 오류:', error);
       }
@@ -43,42 +56,6 @@ function App() {
 
     fetchData();
   }, [activeStatus]);
-
-  const updateCheckedStatus = async (id, newCheckedState) => {
-    try {
-      await pb.collection('List').update(id, {
-        checked: newCheckedState,
-      });
-
-      const updatedDataList = await pb.collection('List').getFullList();
-      setList(updatedDataList);
-      updateDataCounts(updatedDataList);
-    } catch (error) {
-      console.error('업데이트 오류:', error);
-    }
-  };
-
-  const updateDataCounts = (dataList) => {
-    const newData = [
-      { title: '모두', count: dataList.length, status: 'all' },
-      {
-        title: '할일',
-        count: dataList.filter((item) => !item.checked).length,
-        status: 'todo',
-      },
-      {
-        title: '한일',
-        count: dataList.filter((item) => item.checked).length,
-        status: 'done',
-      },
-      {
-        title: '보관',
-        count: dataList.filter((item) => item.saved).length,
-        status: 'save',
-      },
-    ];
-    setStatusData(newData);
-  };
 
   const handleBtnClick = () => {
     setIsActive(!isClosedModal);
@@ -99,7 +76,26 @@ function App() {
   };
 
   const handleCheckBox = async (id, newCheckedState) => {
-    await updateCheckedStatus(id, newCheckedState);
+    try {
+      await pb.collection('List').update(id, {
+        checked: newCheckedState,
+      });
+      updateStatusData();
+    } catch (error) {
+      console.error('업데이트 오류:', error);
+    }
+  };
+
+  const handleSavedBox = async (id, newSavedState) => {
+    try {
+      await pb.collection('List').update(id, {
+        saved: newSavedState,
+        checked: newSavedState,
+      });
+      updateStatusData();
+    } catch (error) {
+      console.error('업데이트 오류:', error);
+    }
   };
 
   return (
@@ -115,12 +111,12 @@ function App() {
       <StatusBar
         data={statusData}
         onStatusClick={handleStatusClick}
-        status={activeStatus}
+        activeStatus={activeStatus}
       />
       <CardList
-        activeStatus={activeStatus}
         list={list}
         onChecked={handleCheckBox}
+        onSavedChange={handleSavedBox}
       />
       <Modal
         isClosedModal={isClosedModal}
