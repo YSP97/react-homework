@@ -3,9 +3,8 @@ import Dialog from '../Dialog/Dialog';
 import S from './Modal.module.css';
 import listData from './../../data/data';
 
-function Modal({ isClosedModal, onSave, onClose, setInputValue }) {
+function Modal({ isClosedModal, onSave, onClose }) {
   const handleChange = (e) => {
-    setInputValue(e.target.value);
     console.log(e.target.value);
   };
 
@@ -16,7 +15,6 @@ function Modal({ isClosedModal, onSave, onClose, setInputValue }) {
 
   const isSvgHidden = true;
 
-  console.log(isClosedModal);
   return (
     <div className={`${S.component} ${isClosedModal ? S.isActive : ''}`}>
       <div className={S.modal}>

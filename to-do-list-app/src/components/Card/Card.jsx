@@ -1,14 +1,28 @@
+import { useState } from 'react';
 import S from './Card.module.css';
-function Card() {
+
+function Card({ id, title, text, startTime, endTime, checked, onChecked }) {
+  const [isChecked, setIsChecked] = useState(checked);
+
+  const handleCheckboxChange = (event) => {
+    const newCheckedState = event.target.checked;
+    setIsChecked(newCheckedState);
+    onChecked(id, newCheckedState);
+  };
+
   return (
-    <div className={S.component}>
+    <div className={`${S.component} ${isChecked ? S.checked : ''}`}>
       <div className={S.card}>
         <div className={S.text}>
-          <h3>카드 제목</h3>
-          <p>동네 주민 정기 모임일. 저녁 식사 후, 모임 회의 가질 예정.</p>
+          <h3>{title}</h3>
+          <p>{text}</p>
         </div>
         <div className={S.input}>
-          <input type="checkbox" name="" id="" />
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+          />
         </div>
       </div>
 
@@ -17,7 +31,9 @@ function Card() {
       <div className={S.bottom}>
         <div className={S.time}>
           <span>오늘</span>
-          <span className={S.now}>오후 07:00 - 9:30</span>
+          <span
+            className={S.now}
+          >{`오후 ${startTime.slice(11, 16)} - ${endTime.slice(11, 16)}`}</span>
         </div>
         <button type="button">
           <svg
