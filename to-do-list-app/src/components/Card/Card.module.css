@@ -20,12 +20,19 @@
     display: flex;
     align-items: flex-start;
     input[type='checkbox'] {
-      width: var(--space-5, 20px);
-
-      height: var(--space-5, 20px);
-      border: 3px solid var(--primary);
-      border-radius: 9999px;
+      width: 20px;
+      height: 20px;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url('/assets/unchecked.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      cursor: pointer;
     }
+  }
+
+  .input input[type='checkbox']:checked {
+    background-image: url('/assets/checked.svg');
   }
 }
 

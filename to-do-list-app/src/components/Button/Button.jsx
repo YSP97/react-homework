@@ -1,9 +1,11 @@
 import S from './Button.module.css';
 function Button() {
+  const isSvgHidden = false;
   return (
     <div className={S.component}>
       <button type="button">
         <svg
+          className={isSvgHidden ? S.hidden : ''}
           width="20"
           height="20"
           viewBox="0 0 20 20"

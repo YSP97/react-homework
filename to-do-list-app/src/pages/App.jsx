@@ -17,7 +17,7 @@ function App() {
       <Button />
       <StatusBar />
       <CardList />
-      <Modal />
+      {/* <Modal /> */}
     </div>
   );
 }
