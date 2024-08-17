@@ -16,7 +16,7 @@
   gap: 4px;
 
   p {
-    color: var(--Status-active, #0760fb);
+    color: var(--Status-deactive, #979797);
     font-family: Pretendard;
     font-size: 14px;
     font-style: normal;
@@ -36,16 +36,16 @@
 
     opacity: var(--sds-size-stroke-border);
 
-    background: var(--Status-active, #0760fb);
+    background: var(--Status-deactive, #979797);
   }
 }
 
 .isActive {
   p {
-    color: var(--Status-deactive, #979797);
+    color: var(--Status-active, #0760fb);
   }
 
   div {
-    background: var(--Status-deactive, #979797);
+    background: var(--Status-active, #0760fb);
   }
 }
