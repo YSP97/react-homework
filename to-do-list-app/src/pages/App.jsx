@@ -189,7 +189,7 @@ function App() {
 
   return (
     <div className={`${S.component} ${isDarkMode ? S.isDarkMode : ''}`}>
-      <a href="">
+      <a href="/" aria-label="홈으로 이동">
         <h1 style={blur}></h1>
       </a>
       <div className={S.h2Group} style={blur}>

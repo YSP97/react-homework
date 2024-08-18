@@ -50,10 +50,16 @@ function Card({
           <p>{text}</p>
         </div>
         <div className={S.input}>
+          <label htmlFor={`checkbox-${id}`} className="sr-only">
+            완료 여부 체크박스
+          </label>
           <input
+            id={`checkbox-${id}`}
             type="checkbox"
             checked={isChecked}
             onChange={handleCheckboxChange}
+            aria-labelledby={`title-${id}`}
+            aria-checked={isChecked}
           />
         </div>
       </div>
@@ -68,10 +74,16 @@ function Card({
           >{`${daynight} ${convertMinutesToTime(startTime)} - ${convertMinutesToTime(endTime)}`}</span>
         </div>
         <div className={S.input}>
+          <label htmlFor={`save-checkbox-${id}`} className="sr-only">
+            보관 여부 체크박스
+          </label>
           <input
+            id={`save-checkbox-${id}`}
             type="checkbox"
             checked={isSaved}
             onChange={handleBottomCheckboxChange}
+            aria-label="보관 여부"
+            aria-checked={isSaved}
           />
         </div>
       </div>
