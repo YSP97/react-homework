@@ -1,5 +1,15 @@
 import S from './Dialog.module.css';
-function Dialog({ onChange, title, text }) {
+
+function Dialog({
+  onChange,
+  title,
+  text,
+  value,
+  onStartTimeChange,
+  onEndTimeChange,
+  startTime,
+  endTime,
+}) {
   return (
     <div className={S.component}>
       <h3>{title}</h3>
@@ -7,16 +17,23 @@ function Dialog({ onChange, title, text }) {
         <textarea
           onChange={onChange}
           placeholder={text}
+          value={value}
           className={S.textarea}
         />
       ) : (
         <div className={S.selectContainer}>
           <select onChange={onChange}>
-            <option value="option1">오전</option>
-            <option value="option2">오후</option>
+            <option value="오전">오전</option>
+            <option value="오후">오후</option>
           </select>
           <div className={S.timeInputContainer}>
-            <input type="text" placeholder="08:00" className={S.timeInput} />
+            <input
+              type="text"
+              placeholder="08:00"
+              className={S.timeInput}
+              value={startTime}
+              onChange={onStartTimeChange}
+            />
             <span>
               <svg
                 width="10"
@@ -28,7 +45,13 @@ function Dialog({ onChange, title, text }) {
                 <path d="M1 1H9" stroke="#979797" strokeLinecap="round" />
               </svg>
             </span>
-            <input type="text" placeholder="10:00" className={S.timeInput} />
+            <input
+              type="text"
+              placeholder="10:00"
+              className={S.timeInput}
+              value={endTime}
+              onChange={onEndTimeChange}
+            />
           </div>
         </div>
       )}

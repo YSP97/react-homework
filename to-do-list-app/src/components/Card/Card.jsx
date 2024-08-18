@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import S from './Card.module.css';
+import { convertMinutesToTime } from '@/utils/getTimeNumber';
 
 function Card({
   id,
@@ -11,6 +12,7 @@ function Card({
   saved,
   onChecked,
   onSavedChange,
+  daynight,
 }) {
   const [isChecked, setIsChecked] = useState(checked);
   const [isSaved, setIsSaved] = useState(saved);
@@ -51,7 +53,7 @@ function Card({
           <span>오늘</span>
           <span
             className={S.now}
-          >{`오후 ${startTime.slice(11, 16)} - ${endTime.slice(11, 16)}`}</span>
+          >{`${daynight} ${convertMinutesToTime(startTime)} - ${convertMinutesToTime(endTime)}`}</span>
         </div>
         <div className={S.input}>
           <input

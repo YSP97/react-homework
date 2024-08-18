@@ -83,6 +83,8 @@ function App() {
 
   const handleSave = () => {
     setIsActive(false);
+    updateList();
+    console.log('저장');
   };
 
   const handleClose = () => {

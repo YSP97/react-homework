@@ -12,6 +12,7 @@ function CardList({ list, onChecked, onSavedChange }) {
           text={item.text}
           checked={item.checked}
           saved={item.saved}
+          daynight={item.daynight}
           startTime={item.startTime}
           endTime={item.endTime}
           onChecked={onChecked}
