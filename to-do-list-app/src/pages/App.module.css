@@ -44,7 +44,7 @@
 }
 
 .isDarkMode {
-  background: var(--viewport, #00050e);
+
 
   h1 {
     background-image: url(/assets/Logo_dark.svg);

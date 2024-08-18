@@ -38,7 +38,7 @@ function App() {
 
   useEffect(() => {
     if (isDarkMode) {
-      document.body.style.backgroundColor = '#00050e'; 
+      document.body.style.backgroundColor = '#00050e';
     } else {
       document.body.style.backgroundColor = '#fff';
     }
@@ -178,6 +178,7 @@ function App() {
         isClosedModal={isClosedModal}
         onSave={handleSave}
         onClose={handleClose}
+        isDarkMode={isDarkMode}
       />
     </div>
   );

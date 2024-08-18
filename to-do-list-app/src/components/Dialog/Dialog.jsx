@@ -9,9 +9,10 @@ function Dialog({
   onEndTimeChange,
   startTime,
   endTime,
+  isDarkMode,
 }) {
   return (
-    <div className={S.component}>
+    <div className={`${S.component} ${isDarkMode ? S.isDarkMode : ''}`}>
       <h3>{title}</h3>
       {text ? (
         <textarea

@@ -36,7 +36,6 @@
     color: var(--Input-normal, #979797);
   }
 
-
   textarea {
     height: auto;
   }
@@ -62,8 +61,7 @@
   }
 }
 
-
-textarea[placeholder="치맥 파티!"] {
+textarea[placeholder='치맥 파티!'] {
   height: 30px;
 }
 .timeInputContainer {
@@ -75,5 +73,16 @@ textarea[placeholder="치맥 파티!"] {
     width: 47px;
     border-bottom: 1px solid var(--Time-normal, #979797);
     opacity: var(--sds-size-stroke-border);
+  }
+}
+
+.isDarkMode {
+  background: var(--Dialog-background, #00050e);
+
+  .selectContainer {
+    select {
+      background: var(--Dialog-background, #00050e);
+      border: 1px solid var(--Select-border, #717171);
+    }
   }
 }

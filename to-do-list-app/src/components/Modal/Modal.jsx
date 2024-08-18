@@ -7,7 +7,7 @@ import gsap from 'gsap';
 import pb from './../../../api/pocketbase';
 import { convertTimeToMinutes } from '@/utils/getTimeNumber';
 
-function Modal({ isClosedModal, onSave, onClose }) {
+function Modal({ isClosedModal, onSave, onClose, isDarkMode }) {
   const modalRef = useRef(null);
   const [titleValue, setTitleValue] = useState('');
   const [textValue, setTextValue] = useState('');
@@ -83,7 +83,7 @@ function Modal({ isClosedModal, onSave, onClose }) {
 
   return (
     <div
-      className={`${S.component} ${isClosedModal ? S.isActive : ''}`}
+      className={`${S.component} ${isClosedModal ? S.isActive : ''} ${isDarkMode ? S.isDarkMode : ''}`}
       ref={modalRef}
     >
       <div className={S.modal}>
@@ -105,6 +105,7 @@ function Modal({ isClosedModal, onSave, onClose }) {
             onEndTimeChange={handleEndTimeChange}
             startTime={startTime}
             endTime={endTime}
+            isDarkMode={isDarkMode}
           />
         ))}
         <div className={S.buttons}>

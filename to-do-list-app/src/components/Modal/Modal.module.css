@@ -31,3 +31,9 @@
   background: var(--Dialog-background, white);
   width: 260px;
 }
+
+.isDarkMode {
+  .modal {
+    background: var(--Dialog-background, #00050e);
+  }
+}
