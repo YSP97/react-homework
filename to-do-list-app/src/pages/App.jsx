@@ -19,7 +19,7 @@ function App() {
     { title: '보관', count: 0, status: 'save' },
   ]);
 
-  const updateStatusData = async () => {
+  const updateList = async () => {
     const allList = await pb.collection('List').getFullList();
 
     const filteredList =
@@ -61,7 +61,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        updateStatusData();
+        updateList();
       } catch (error) {
         console.error('데이터 가져오기 오류:', error);
       }
@@ -73,6 +73,13 @@ function App() {
   const handleBtnClick = () => {
     setIsActive(!isClosedModal);
   };
+
+  let blur = {};
+  if (isClosedModal) {
+    blur = {
+      filter: 'blur(2px)',
+    };
+  }
 
   const handleSave = () => {
     setIsActive(false);
@@ -93,7 +100,7 @@ function App() {
       await pb.collection('List').update(id, {
         checked: newCheckedState,
       });
-      updateStatusData();
+      updateList();
     } catch (error) {
       console.error('업데이트 오류:', error);
     }
@@ -105,7 +112,7 @@ function App() {
         saved: newSavedState,
         checked: newSavedState,
       });
-      updateStatusData();
+      updateList();
     } catch (error) {
       console.error('업데이트 오류:', error);
     }
@@ -114,9 +121,9 @@ function App() {
   return (
     <div className={S.component}>
       <a href="">
-        <h1></h1>
+        <h1 style={blur}></h1>
       </a>
-      <div className={S.h2Group}>
+      <div className={S.h2Group} style={blur}>
         <h2>우리, 오늘 뭐할까?</h2>
         <p>{today}</p>
       </div>
