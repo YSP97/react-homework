@@ -2,7 +2,7 @@ import React from 'react';
 import Status from '../Status/Status';
 import S from './StatusBar.module.css';
 
-function StatusBar({ data, onStatusClick, activeStatus }) {
+function StatusBar({ data, onStatusClick, activeStatus, disabled }) {
   return (
     <div className={S.component}>
       {data.map((item) => (
@@ -13,6 +13,7 @@ function StatusBar({ data, onStatusClick, activeStatus }) {
           status={item.status}
           isActive={activeStatus === item.status}
           onClick={onStatusClick}
+          disabled={item.count === 0}
         />
       ))}
     </div>

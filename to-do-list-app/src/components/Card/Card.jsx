@@ -19,6 +19,12 @@ function Card({
 
   const handleCheckboxChange = (event) => {
     const newCheckedState = event.target.checked;
+
+    if (isSaved && !newCheckedState) {
+      setIsSaved(false);
+      onSavedChange(id, false);
+    }
+
     setIsChecked(newCheckedState);
     onChecked(id, newCheckedState);
   };

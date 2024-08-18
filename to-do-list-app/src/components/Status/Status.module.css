@@ -49,3 +49,8 @@
     background: var(--Status-active, #0760fb);
   }
 }
+
+.component.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
