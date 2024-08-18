@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/api/*"
-  to = "https://your-pocketbase-instance-url.com/api/:splat"
+  to = "https://yunseon.pockethost.io/api/:splat"
   status = 200
