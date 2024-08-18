@@ -11,12 +11,16 @@ function Modal({ isClosedModal, onSave, onClose }) {
   const modalRef = useRef(null);
   const [titleValue, setTitleValue] = useState('');
   const [textValue, setTextValue] = useState('');
-  const [dayNight, setDayNight] = useState('오전');
-  const [startTime, setStartTime] = useState('08:00'); // 첫 번째 시간 입력값
-  const [endTime, endStartTime] = useState('10:00'); // 두 번째 시간 입력값
+  const [dayNight, setDayNight] = useState('');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
 
   useEffect(() => {
     if (isClosedModal) {
+      setTitleValue('');
+      setTextValue('');
+      setStartTime('');
+      setEndTime('');
       gsap.fromTo(
         modalRef.current,
         { y: 300, opacity: 0 },
@@ -52,7 +56,7 @@ function Modal({ isClosedModal, onSave, onClose }) {
   };
 
   const handleEndTimeChange = (e) => {
-    endStartTime(e.target.value);
+    setEndTime(e.target.value);
   };
 
   const handleSave = async () => {
