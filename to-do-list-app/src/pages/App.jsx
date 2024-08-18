@@ -4,7 +4,7 @@ import S from './App.module.css';
 import StatusBar from '@/components/StatusBar/StatusBar';
 import CardList from '@/components/CardList/CardList';
 import Modal from '@/components/Modal/Modal';
-import getToday from '@/utils/getToday';
+import getToday from '../utils/getToday';
 import pb from '../../api/pocketbase';
 import gsap from 'gsap';
 
