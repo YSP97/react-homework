@@ -1,7 +1,7 @@
 .component {
   background: var(--Dialog-background, white);
   /* position: absolute; */
-  top: 38%;
+  top: 37%;
   box-shadow: 0px -2px 6px 0px #00040e1a;
   /* width: 320px; */
   border-radius: var(--space-5, 20px) var(--space-5, 20px) 0px 0px;
