@@ -4,7 +4,11 @@ function Dialog({ onChange, title, text }) {
     <div className={S.component}>
       <h3>{title}</h3>
       {text ? (
-        <input onChange={onChange} type="text" placeholder={text} />
+        <textarea
+          onChange={onChange}
+          placeholder={text}
+          className={S.textarea}
+        />
       ) : (
         <div className={S.selectContainer}>
           <select onChange={onChange}>

@@ -16,7 +16,9 @@
     line-height: normal;
   }
 
-  input {
+  input,
+  textarea {
+    all: unset;
     border: none;
     border-bottom: 1px solid var(--Input-normal, #979797);
     color: var(--Input-normal, #979797);
@@ -27,11 +29,16 @@
     line-height: 150%;
     padding: 4px;
     box-sizing: border-box;
-
   }
 
   input::placeholder {
     white-space: pre-wrap;
+    color: var(--Input-normal, #979797);
+  }
+
+
+  textarea {
+    height: auto;
   }
 }
 
@@ -53,6 +60,11 @@
     font-weight: 500;
     line-height: 100%;
   }
+}
+
+
+textarea[placeholder="치맥 파티!"] {
+  height: 30px;
 }
 .timeInputContainer {
   display: flex;
