@@ -12,12 +12,37 @@ function App() {
   const [isClosedModal, setIsActive] = useState(false);
   const [list, setList] = useState([]);
   const [activeStatus, setActiveStatus] = useState('all');
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [statusData, setStatusData] = useState([
     { title: '모두', count: 0, status: 'all' },
     { title: '할일', count: 0, status: 'todo' },
     { title: '한일', count: 0, status: 'done' },
     { title: '보관', count: 0, status: 'save' },
   ]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDarkMode(mediaQuery.matches);
+
+    const handleChange = (e) => {
+      console.log('야간모드 온!!');
+      setIsDarkMode(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.style.backgroundColor = '#00050e'; 
+    } else {
+      document.body.style.backgroundColor = '#fff';
+    }
+  }, [isDarkMode]);
 
   const updateList = async () => {
     const allList = await pb.collection('List').getFullList({
@@ -128,7 +153,7 @@ function App() {
   };
 
   return (
-    <div className={S.component}>
+    <div className={`${S.component} ${isDarkMode ? S.isDarkMode : ''}`}>
       <a href="">
         <h1 style={blur}></h1>
       </a>
@@ -141,11 +166,13 @@ function App() {
         data={statusData}
         onStatusClick={handleStatusClick}
         activeStatus={activeStatus}
+        isDarkMode={isDarkMode}
       />
       <CardList
         list={list}
         onChecked={handleCheckBox}
         onSavedChange={handleSavedBox}
+        isDarkMode={isDarkMode}
       />
       <Modal
         isClosedModal={isClosedModal}

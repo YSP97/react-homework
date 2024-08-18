@@ -13,6 +13,7 @@ function Card({
   onChecked,
   onSavedChange,
   daynight,
+  isDarkMode,
 }) {
   const [isChecked, setIsChecked] = useState(checked);
   const [isSaved, setIsSaved] = useState(saved);
@@ -37,7 +38,9 @@ function Card({
   };
 
   return (
-    <div className={`${S.component} ${isChecked ? S.checked : ''}`}>
+    <div
+      className={`${S.component} ${isChecked ? S.checked : ''} ${isDarkMode ? S.isDarkMode : ''}`}
+    >
       <div className={S.card}>
         <div className={S.text}>
           <h3>{title}</h3>
@@ -52,7 +55,7 @@ function Card({
         </div>
       </div>
 
-      <hr />
+      <hr className={S.hr} />
 
       <div className={S.bottom}>
         <div className={S.time}>

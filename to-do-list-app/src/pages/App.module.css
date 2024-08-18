@@ -42,3 +42,17 @@
     }
   }
 }
+
+.isDarkMode {
+  background: var(--viewport, #00050e);
+
+  h1 {
+    background-image: url(/assets/Logo_dark.svg);
+  }
+
+  .h2Group {
+    h2 {
+      color: var(--forground, #fff);
+    }
+  }
+}

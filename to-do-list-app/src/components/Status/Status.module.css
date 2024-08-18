@@ -54,3 +54,11 @@
   pointer-events: none;
   opacity: 0.5;
 }
+
+.isDarkMode {
+  .link {
+    div {
+      color: black;
+    }
+  }
+}

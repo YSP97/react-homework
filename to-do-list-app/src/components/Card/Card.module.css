@@ -4,6 +4,12 @@
   opacity: var(--sds-size-stroke-border);
   background: var(--Do-it-background, #fff);
   box-shadow: 0px 4px 12px 0px rgba(0, 5, 14, 0.05);
+
+  hr {
+    background-color: #d9d9d9; /* 원하는 hr 색상으로 변경 */
+    border: none;
+    height: 1px;
+  }
 }
 
 .component h3 {
@@ -33,6 +39,9 @@
   cursor: pointer;
 }
 
+.isDarkMode .input input[type='checkbox'] {
+  background-image: url('/assets/unchecked_dark.svg');
+}
 .input input[type='checkbox']:checked {
   background-image: url('/assets/checked.svg');
 }
@@ -91,6 +100,10 @@
   cursor: pointer;
 }
 
+.isDarkMode .bottom .input input[type='checkbox'] {
+  background-image: url('/assets/unsaved_dark.svg');
+}
+
 .bottom .input input[type='checkbox']:checked {
   background-image: url('/assets/saved.svg');
 }
@@ -104,4 +117,8 @@
 
 .bottom .time .now {
   font-weight: 400;
+}
+
+.isDarkMode {
+  background: var(--Do-it-background, #e2ebfa);
 }

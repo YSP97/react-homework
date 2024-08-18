@@ -1,7 +1,7 @@
 import Card from '../Card/Card';
 import S from './CardList.module.css';
 
-function CardList({ list, onChecked, onSavedChange }) {
+function CardList({ list, onChecked, onSavedChange, isDarkMode }) {
   return (
     <div className={S.component}>
       {list.map((item) => (
@@ -16,7 +16,8 @@ function CardList({ list, onChecked, onSavedChange }) {
           startTime={item.startTime}
           endTime={item.endTime}
           onChecked={onChecked}
-          onSavedChange={onSavedChange} // 추가
+          onSavedChange={onSavedChange}
+          isDarkMode={isDarkMode}
         />
       ))}
     </div>

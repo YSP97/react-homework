@@ -1,6 +1,14 @@
 import S from './Status.module.css';
 
-function Status({ count, title, onClick, status, isActive, disabled }) {
+function Status({
+  count,
+  title,
+  onClick,
+  status,
+  isActive,
+  disabled,
+  isDarkMode,
+}) {
   const handleClick = (e) => {
     e.preventDefault();
     onClick(status);
@@ -8,7 +16,7 @@ function Status({ count, title, onClick, status, isActive, disabled }) {
 
   return (
     <div
-      className={`${S.component} ${disabled ? S.disabled : ''}`}
+      className={`${S.component} ${disabled ? S.disabled : ''} ${isDarkMode ? S.isDarkMode : ''}`}
       onClick={handleClick}
     >
       <a href="#" className={`${S.link} ${isActive ? S.isActive : ''}`}>
