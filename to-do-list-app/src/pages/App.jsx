@@ -74,6 +74,13 @@ function App() {
     setActiveStatus(status);
   };
 
+  let blur = {};
+  if (isClosedModal) {
+    blur = {
+      filter: 'blur(2px)',
+    };
+  }
+
   const handleCheckBox = async (id, newCheckedState) => {
     try {
       await pb.collection('List').update(id, {
@@ -115,10 +122,10 @@ function App() {
 
   return (
     <div className={`${S.component} ${isDarkMode ? S.isDarkMode : ''}`}>
-      <a href="/" aria-label="홈으로 이동">
+      <a href="/" aria-label="홈으로 이동" style={blur}>
         <h1></h1>
       </a>
-      <div className={S.h2Group}>
+      <div className={S.h2Group} style={blur}>
         <h2>우리, 오늘 뭐할까?</h2>
         <p>{today}</p>
       </div>
@@ -140,6 +147,7 @@ function App() {
         onSave={handleSave}
         onClose={handleClose}
         isDarkMode={isDarkMode}
+        blur={blur}
       />
     </div>
   );
