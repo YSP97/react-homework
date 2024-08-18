@@ -55,6 +55,14 @@ function App() {
     fetchDataOnce();
   }, [activeStatus]);
 
+  useEffect(() => {
+    if (isClosedModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isClosedModal]);
+
   const handleBtnClick = () => {
     setIsActive(!isClosedModal);
   };
