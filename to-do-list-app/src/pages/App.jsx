@@ -20,7 +20,9 @@ function App() {
   ]);
 
   const updateList = async () => {
-    const allList = await pb.collection('List').getFullList();
+    const allList = await pb.collection('List').getFullList({
+      sort: '+startTime',
+    });
 
     const filteredList =
       activeStatus === 'done'
@@ -102,7 +104,12 @@ function App() {
       await pb.collection('List').update(id, {
         checked: newCheckedState,
       });
-      updateList();
+      await updateList();
+
+      const filteredList = list.filter((item) => item.status === activeStatus);
+      if (filteredList.length === 0) {
+        setActiveStatus('all');
+      }
     } catch (error) {
       console.error('업데이트 오류:', error);
     }
