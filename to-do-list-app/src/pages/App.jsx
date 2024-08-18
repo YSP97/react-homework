@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import pb from '../../api/pocketbase.js';
+import { fetchData } from '../utils/fetchData';
 import Button from '../components/Button/Button';
 import S from './App.module.css';
 import StatusBar from '../components/StatusBar/StatusBar';
 import CardList from '../components/CardList/CardList';
 import Modal from '../components/Modal/Modal';
 import getToday from '../utils/getToday';
-import gsap from 'gsap';
-import { debounce } from 'lodash';
+import pb from '../../api/pocketbase.js';
 
 function App() {
   const [isClosedModal, setIsActive] = useState(false);
@@ -44,94 +43,25 @@ function App() {
     }
   }, [isDarkMode]);
 
-  const updateList = debounce(async () => {
-    const allList = await pb.collection('List').getFullList(50, {
-      sort: '+startTime',
-    });
-
-    const today = new Date();
-    const todayDate = today.toISOString().split('T')[0];
-
-    for (const item of allList) {
-      const itemDate = new Date(item.created).toISOString().split('T')[0];
-      if (itemDate !== todayDate) {
-        try {
-          await pb.collection('List').delete(item.id);
-        } catch (error) {
-          console.error(`항목 삭제 오류 (ID: ${item.id}):`, error);
-        }
-      }
-    }
-
-    const updatedList = await pb.collection('List').getFullList({
-      sort: '+startTime',
-    });
-
-    const filteredList = updatedList.filter((item) => {
-      if (activeStatus === 'done') {
-        return item.checked;
-      } else if (activeStatus === 'todo') {
-        return !item.checked;
-      } else if (activeStatus === 'save') {
-        return item.saved;
-      } else {
-        return true;
-      }
-    });
-
-    setList(filteredList);
-
-    const allCount = updatedList.length;
-    const todoCount = updatedList.filter((item) => !item.checked).length;
-    const doneCount = updatedList.filter((item) => item.checked).length;
-    const saveCount = updatedList.filter((item) => item.saved).length;
-
-    setStatusData([
-      { title: '모두', count: allCount, status: 'all' },
-      { title: '할일', count: todoCount, status: 'todo' },
-      { title: '한일', count: doneCount, status: 'done' },
-      { title: '보관', count: saveCount, status: 'save' },
-    ]);
-  }, 300);
-
   useEffect(() => {
-    if (isClosedModal) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isClosedModal]);
-
-  useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataOnce = async () => {
       try {
-        updateList();
+        await fetchData(activeStatus, setList, setStatusData);
       } catch (error) {
         console.error('데이터 가져오기 오류:', error);
       }
     };
 
-    fetchData();
+    fetchDataOnce();
   }, [activeStatus]);
 
   const handleBtnClick = () => {
     setIsActive(!isClosedModal);
   };
 
-  let blur = {};
-  if (isClosedModal) {
-    blur = {
-      filter: 'blur(2px)',
-    };
-  }
-
   const handleSave = () => {
     setIsActive(false);
-    updateList();
+    fetchData(activeStatus, setList, setStatusData);
   };
 
   const handleClose = () => {
@@ -156,12 +86,7 @@ function App() {
         setActiveStatus('all');
       }
 
-      updateList();
-
-      const filteredList = list.filter((item) => item.status === activeStatus);
-      if (filteredList.length === 0) {
-        setActiveStatus('all');
-      }
+      fetchData(activeStatus, setList, setStatusData);
     } catch (error) {
       console.error('데이터 업데이트 오류:', error);
     }
@@ -182,7 +107,7 @@ function App() {
         }
       }
 
-      updateList();
+      fetchData(activeStatus, setList, setStatusData);
     } catch (error) {
       console.error('데이터 업데이트 오류:', error);
     }
@@ -191,9 +116,9 @@ function App() {
   return (
     <div className={`${S.component} ${isDarkMode ? S.isDarkMode : ''}`}>
       <a href="/" aria-label="홈으로 이동">
-        <h1 style={blur}></h1>
+        <h1></h1>
       </a>
-      <div className={S.h2Group} style={blur}>
+      <div className={S.h2Group}>
         <h2>우리, 오늘 뭐할까?</h2>
         <p>{today}</p>
       </div>
