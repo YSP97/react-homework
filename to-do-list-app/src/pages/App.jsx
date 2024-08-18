@@ -129,6 +129,13 @@ function App() {
       await pb.collection('List').update(id, {
         checked: newCheckedState,
       });
+
+      if (activeStatus === 'todo' && newCheckedState) {
+        setActiveStatus('all');
+      } else if (activeStatus === 'done' && !newCheckedState) {
+        setActiveStatus('all');
+      }
+
       await updateList();
 
       const filteredList = list.filter((item) => item.status === activeStatus);
@@ -146,6 +153,15 @@ function App() {
         saved: newSavedState,
         checked: newSavedState,
       });
+
+      if (!newSavedState) {
+        if (activeStatus === 'save') {
+          setActiveStatus('all');
+        } else if (activeStatus === 'done') {
+          setActiveStatus('all');
+        }
+      }
+
       updateList();
     } catch (error) {
       console.error('업데이트 오류:', error);
