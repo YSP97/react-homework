@@ -136,7 +136,7 @@ function App() {
         setActiveStatus('all');
       }
 
-      await updateList();
+      updateList();
 
       const filteredList = list.filter((item) => item.status === activeStatus);
       if (filteredList.length === 0) {

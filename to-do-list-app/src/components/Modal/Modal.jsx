@@ -6,6 +6,9 @@ import listData from './../../data/data';
 import gsap from 'gsap';
 import pb from './../../../api/pocketbase';
 import { convertTimeToMinutes } from '@/utils/getTimeNumber';
+import { ModalPropTypes } from '/types/type.d';
+
+Modal.propTypes = ModalPropTypes;
 
 function Modal({ isClosedModal, onSave, onClose, isDarkMode }) {
   const modalRef = useRef(null);

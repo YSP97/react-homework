@@ -1,7 +1,2 @@
 @import './_reset.css';
-@import './_utils.css';
 @import './_variables.css';
-
-body{
-  background-color: var(--background);
-}

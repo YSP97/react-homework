@@ -1,4 +1,7 @@
 import S from './Dialog.module.css';
+import { DialogPropTypes } from '/types/type.d';
+
+Dialog.propTypes = DialogPropTypes;
 
 function Dialog({
   onChange,

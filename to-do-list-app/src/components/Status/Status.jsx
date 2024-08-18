@@ -1,4 +1,7 @@
 import S from './Status.module.css';
+import { StatusPropTypes } from '/types/type.d';
+
+Status.propTypes = StatusPropTypes;
 
 function Status({
   count,
