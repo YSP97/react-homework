@@ -7,6 +7,7 @@ import CardList from '../components/CardList/CardList';
 import Modal from '../components/Modal/Modal';
 import getToday from '../utils/getToday';
 import gsap from 'gsap';
+import { debounce } from 'lodash';
 
 function App() {
   const [isClosedModal, setIsActive] = useState(false);
@@ -43,8 +44,8 @@ function App() {
     }
   }, [isDarkMode]);
 
-  const updateList = async () => {
-    const allList = await pb.collection('List').getFullList({
+  const updateList = debounce(async () => {
+    const allList = await pb.collection('List').getFullList(50, {
       sort: '+startTime',
     });
 
@@ -91,7 +92,7 @@ function App() {
       { title: '한일', count: doneCount, status: 'done' },
       { title: '보관', count: saveCount, status: 'save' },
     ]);
-  };
+  }, 300);
 
   useEffect(() => {
     if (isClosedModal) {

@@ -7,6 +7,7 @@ Button.propType = {
   btnText: string,
   isSvgHidden: bool,
 };
+
 function Button({ onClick, style, btnText, isSvgHidden }) {
   return (
     <div className={S.component}>
