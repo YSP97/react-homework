@@ -29,6 +29,7 @@
 
   gap: var(--space-6, 24px);
   background: var(--Dialog-background, white);
+  border-radius: var(--space-5, 20px) var(--space-5, 20px) 0px 0px;
   width: 260px;
 }
 

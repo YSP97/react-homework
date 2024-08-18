@@ -39,7 +39,7 @@ function App() {
     if (isDarkMode) {
       document.body.style.backgroundColor = '#00050e';
     } else {
-      document.body.style.backgroundColor = '#fff';
+      document.body.style.backgroundColor = '#f9f9f9';
     }
   }, [isDarkMode]);
 
