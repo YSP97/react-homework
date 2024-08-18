@@ -4,7 +4,7 @@ import Dialog from '../Dialog/Dialog';
 import S from './Modal.module.css';
 import listData from './../../data/data';
 import gsap from 'gsap';
-import pb from './../../../api/pocketbase';
+import pb from '../../../api/pocketbase';
 import { convertTimeToMinutes } from '@/utils/getTimeNumber';
 import { ModalPropTypes } from '/types/type.d';
 

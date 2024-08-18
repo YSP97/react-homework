@@ -5,7 +5,7 @@ import StatusBar from '@/components/StatusBar/StatusBar';
 import CardList from '@/components/CardList/CardList';
 import Modal from '@/components/Modal/Modal';
 import getToday from '@/utils/getToday';
-import pb from '/api/pocketbase';
+import pb from '../../api/pocketbase';
 import gsap from 'gsap';
 
 function App() {
