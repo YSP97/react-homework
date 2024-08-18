@@ -25,7 +25,6 @@ function App() {
     setIsDarkMode(mediaQuery.matches);
 
     const handleChange = (e) => {
-      console.log('야간모드 온!!');
       setIsDarkMode(e.matches);
     };
 
@@ -49,21 +48,42 @@ function App() {
       sort: '+startTime',
     });
 
-    const filteredList =
-      activeStatus === 'done'
-        ? allList.filter((item) => item.checked)
-        : activeStatus === 'todo'
-          ? allList.filter((item) => !item.checked)
-          : activeStatus === 'save'
-            ? allList.filter((item) => item.saved)
-            : allList;
+    const today = new Date();
+    const todayDate = today.toISOString().split('T')[0];
+
+    for (const item of allList) {
+      const itemDate = new Date(item.created).toISOString().split('T')[0];
+      if (itemDate !== todayDate) {
+        try {
+          await pb.collection('List').delete(item.id);
+        } catch (error) {
+          console.error(`항목 삭제 오류 (ID: ${item.id}):`, error);
+        }
+      }
+    }
+
+    const updatedList = await pb.collection('List').getFullList({
+      sort: '+startTime',
+    });
+
+    const filteredList = updatedList.filter((item) => {
+      if (activeStatus === 'done') {
+        return item.checked;
+      } else if (activeStatus === 'todo') {
+        return !item.checked;
+      } else if (activeStatus === 'save') {
+        return item.saved;
+      } else {
+        return true;
+      }
+    });
 
     setList(filteredList);
 
-    const allCount = allList.length;
-    const todoCount = allList.filter((item) => !item.checked).length;
-    const doneCount = allList.filter((item) => item.checked).length;
-    const saveCount = allList.filter((item) => item.saved).length;
+    const allCount = updatedList.length;
+    const todoCount = updatedList.filter((item) => !item.checked).length;
+    const doneCount = updatedList.filter((item) => item.checked).length;
+    const saveCount = updatedList.filter((item) => item.saved).length;
 
     setStatusData([
       { title: '모두', count: allCount, status: 'all' },
@@ -111,7 +131,6 @@ function App() {
   const handleSave = () => {
     setIsActive(false);
     updateList();
-    console.log('저장');
   };
 
   const handleClose = () => {
@@ -143,7 +162,7 @@ function App() {
         setActiveStatus('all');
       }
     } catch (error) {
-      console.error('업데이트 오류:', error);
+      console.error('데이터 업데이트 오류:', error);
     }
   };
 
@@ -164,7 +183,7 @@ function App() {
 
       updateList();
     } catch (error) {
-      console.error('업데이트 오류:', error);
+      console.error('데이터 업데이트 오류:', error);
     }
   };
 
