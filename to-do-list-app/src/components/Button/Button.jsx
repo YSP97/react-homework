@@ -1,4 +1,12 @@
+import { bool, func, object, string } from 'prop-types';
 import S from './Button.module.css';
+
+Button.propType = {
+  onClick: func.isRequired,
+  style: object,
+  btnText: string,
+  isSvgHidden: bool,
+};
 function Button({ onClick, style, btnText, isSvgHidden }) {
   return (
     <div className={S.component}>
