@@ -1,6 +1,6 @@
 import Card from '../Card/Card';
 import S from './CardList.module.css';
-import { CardListPropTypes } from '/types/type.d';
+import { CardListPropTypes } from '../../types/type.d';
 
 CardList.propTypes = CardListPropTypes;
 

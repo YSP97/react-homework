@@ -1,5 +1,5 @@
 import S from './Status.module.css';
-import { StatusPropTypes } from '../../../types/type.d';
+import { StatusPropTypes } from '../../types/type.d';
 
 Status.propTypes = StatusPropTypes;
 

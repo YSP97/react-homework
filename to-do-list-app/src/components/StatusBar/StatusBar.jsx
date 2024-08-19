@@ -1,7 +1,7 @@
 import React from 'react';
 import Status from '../Status/Status';
 import S from './StatusBar.module.css';
-import { StatusBarPropTypes } from '../../../types/type.d';
+import { StatusBarPropTypes } from '../../types/type.d';
 
 StatusBar.propTypes = StatusBarPropTypes;
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import S from './Card.module.css';
 import { convertMinutesToTime } from '@/utils/getTimeNumber';
-import { CardPropTypes } from './../../../types/type.d';
+import { CardPropTypes } from '../../types/type.d';
 
 Card.propTypes = CardPropTypes;
 
